@@ -1,0 +1,23 @@
+[Unit]
+Description=Ollama container runs ollama inside the local ai runner pod
+Requires=local-ai.pod
+
+[Service]
+# Restart=on-failure
+After=network-online.target
+
+[Container]
+ContainerName=ollama
+Environment=OLLAMA_MODELS=/workspace/.ollama/models OLLAMA_VULKAN=1 OLLAMA_HOST=127.0.0.1:11434 OLLAMA_DEBUG=0
+PodmanArgs=--group-add keep-groups
+HealthCmd=curl http://localhost:11434/
+HealthInterval=30s
+HealthRetries=10
+HealthStartupCmd=curl http://localhost:11434/api/generate -d '{ "model": "qwen3.5:9b"}'
+HealthStartupTimeout=60s
+HealthTimeout=2s
+Image=localhost/ollama:latest-dev
+Pod=local-ai.pod
+
+[Install]
+WantedBy=multi-user.target default.target

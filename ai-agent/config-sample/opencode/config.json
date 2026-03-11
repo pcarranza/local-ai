@@ -1,0 +1,64 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "disabled_providers": [],
+  "model": "ollama/qwen3:2b",
+  "small_model": "ollama/qwen3:2b",
+  "default_agent": "plan",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "ollama (local)",
+      "options": {
+	"baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "gpt-oss:20b":                { "name": "gpt-oss:20b" },
+      	"qwen3:2b":                   { "name": "qwen3:2b" },
+      	"qwen3:9b":                   { "name": "qwen3:9b" },
+        "deepseek-coder-v2:16b":      { "name": "deepseek-coder-v2:16b" }
+      }
+    }
+  },
+  "mode": {
+    "plan": {
+      "model": "ollama/qwen3:2b"
+    },
+    "build": {
+      "model": "ollama/qwen3:2b"
+    }
+  },
+  "autoupdate": true,
+  "permission": {
+    "read": "allow",
+    "bash": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "list": "allow",
+    "skill": "allow",
+    "todowrite": "allow",
+    "todoread": "allow",
+    "webfetch": "allow",
+    "question": "allow",
+    "write": "ask"
+  },
+  "tools": {
+    "bash": true,
+    "edit": true,
+    "write": true,
+    "read": true,
+    "search": true,
+    "glob": true,
+    "grep": true,
+    "list": true,
+    "patch": true,
+    "webfetch": true,
+    "todowrite": true,
+    "todoread": true,
+    "skill": true
+  },
+  "formatter": {
+    "prettier": {
+      "disabled": true
+    }
+  }
+}

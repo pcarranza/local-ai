@@ -1,0 +1,19 @@
+[Unit]
+Description=AI agent runs opencode and openchamber inside a podman container
+Requires=local-ai.pod
+
+[Service]
+Restart=on-failure
+After=network-online.target
+
+[Container]
+ContainerName=ai-agent
+HealthCmd=bash -c 'nc -zv localhost 3000 && nc -zv localhost 3001'
+HealthInterval=30s
+HealthRetries=10
+HealthTimeout=2s
+Image=localhost/ai-agent:latest-dev
+Pod=local-ai.pod
+
+[Install]
+WantedBy=multi-user.target default.target

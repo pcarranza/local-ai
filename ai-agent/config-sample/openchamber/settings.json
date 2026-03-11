@@ -1,0 +1,60 @@
+{
+  "approvedDirectories": [
+    "/workspace"
+  ],
+  "securityScopedBookmarks": [],
+  "lightThemeId": "monokai-light",
+  "darkThemeId": "monokai-dark",
+  "notifyOnSubtasks": true,
+  "notifyOnCompletion": true,
+  "notifyOnError": true,
+  "notifyOnQuestion": true,
+  "notificationTemplates": {
+    "completion": {
+      "title": "{agent_name} is ready",
+      "message": "{model_name} completed the task"
+    },
+    "error": {
+      "title": "Tool error",
+      "message": "{last_message}"
+    },
+    "question": {
+      "title": "Input needed",
+      "message": "{last_message}"
+    },
+    "subtask": {
+      "title": "{agent_name} is ready",
+      "message": "{model_name} completed the task"
+    }
+  },
+  "homeDirectory": "/workspace",
+  "lastDirectory": "/workspace",
+  "themeId": "monokai-light",
+  "themeVariant": "light",
+  "useSystemTheme": true,
+  "projects": [ ],
+  "pinnedDirectories": [
+    "/workspace"
+  ],
+  "fontSize": 110,
+  "terminalFontSize": 14,
+  "favoriteModels": [],
+  "recentModels": [
+    {
+      "providerID": "ollama",
+      "modelID": "qwen3.5:2b"
+    },
+    {
+      "providerID": "ollama",
+      "modelID": "qwen3.5:9b"
+    },
+    {
+      "providerID": "ollama",
+      "modelID": "gpt-oss:20b"
+    }
+  ],
+  "splashBgLight": "#FDF8EC",
+  "splashFgLight": "#292318",
+  "splashBgDark": "#23241E",
+  "splashFgDark": "#F8F8F2"
+}

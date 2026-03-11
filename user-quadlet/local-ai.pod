@@ -1,0 +1,21 @@
+[Unit]
+Description=Local AI runner groups local-ai-agent and ollama in a single pod so they can talk to each other
+After=network-online.target
+
+[Service]
+Restart=on-failure
+
+[Pod]
+PodName=local-ai
+PodmanArgs=--device /dev/kfd --device /dev/dri --security-opt 'label=type:container_runtime_t'
+PublishPort=11434:11434
+PublishPort=3000:3000
+PublishPort=3001:3001
+Volume=%h/.ollama:/root/.ollama
+Volume=%h/.opencode:/root/.local/share/opencode
+Volume=%h/.config/opencode:/root/.config/opencode
+Volume=%h/.config/openchamber:/root/.config/openchamber
+Volume=%h/src:/workspace
+
+[Install]
+WantedBy=multi-user.target default.target
