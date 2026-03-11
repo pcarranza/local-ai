@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-`local-ai-runner` is a self-contained, single-pod deployment that bundles together:
+`local-ai` is a self-contained, single-pod deployment that bundles together:
 
-1. **Ollama** - an open-source LLM runtime.  It is started with a *pre-warm* command that loads a model (default: `gpt-oss:20b`) and keeps the process alive for a day.
+1. **Ollama** - an open-source LLM runtime.  It is started with a *pre-warm* command that loads a model (default: `qwen3.5:9b`) and keeps the process alive for a day.
 2. **OpenCode** - a lightweight agent framework that lets you create and orchestrate LLM agents.
 3. **OpenChamber** - a UI that sits on top of OpenCode, giving a visual interface for your agents.
 
@@ -13,7 +13,7 @@ All three services run inside a single Podman pod so you can start the whole sta
 The repo contains a small Makefile that hides all the plumbing:
 
 - `make build` - builds the two images.
-- `make run` - creates a Podman pod named `local-ai-runner` and launches the images in that pod.
+- `make run` - creates a Podman pod named `local-ai` and launches the images in that pod.
 - `make stop` - stops the containers.
 - `make clean` - removes the images, containers and pod.
 
