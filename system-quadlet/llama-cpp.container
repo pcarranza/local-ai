@@ -1,0 +1,22 @@
+[Unit]
+Description=Llama.cpp running qwen3.5-35B-A3B Q5_K_M model
+
+[Service]
+Restart=on-failure
+After=network-online.target
+
+[Container]
+ContainerName=llama-cpp
+PodmanArgs=--group-add keep-groups
+HealthCmd=curl http://localhost:3002
+HealthInterval=30s
+HealthRetries=10
+HealthTimeout=10s
+Image=ghcr.io/ggml-org/llama.cpp:server-vulkan
+Exec=-hf unsloth/Qwen3.5-35B-A3B-GGUF:Q5_K_M --port 3002 --alias Qwen3.5-35B-A3B
+PublishPort=3002:3002
+Volume=/path-to-your-user-home/.cache/llama.cpp:/home/ubuntu/.cache
+PodmanArgs=--device /dev/kfd --device /dev/dri --security-opt 'label=type:container_runtime_t' --userns keep-id:uid=1000,gid=992
+
+[Install]
+WantedBy=multi-user.target default.target
